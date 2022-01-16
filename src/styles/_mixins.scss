@@ -1,0 +1,13 @@
+@mixin make-flex($dir: column, $align: center, $just: center) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $align;
+  justify-content: $just;
+}
+
+/* Color Theme Swatches in Hex */
+$foreground: #3b3b40;
+$Laboratorio-Permanente-2-hex: #adc8d9;
+$Laboratorio-Permanente-3-hex: #f2c166;
+$Laboratorio-Permanente-4-hex: #a68365;
+$Laboratorio-Permanente-5-hex: #f5f1f1;
