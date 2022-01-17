@@ -1,0 +1,21 @@
+@import "../../styles/mixins";
+
+.FlashcardViewerWrapper {
+  height: 100%;
+  width: 100%;
+  &__header {
+    height: 66px;
+    width: 100%;
+    @include make-flex($just: flex-start, $dir: row);
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #a3a3a3;
+  }
+
+  &__container {
+    height: calc(100% - 66px);
+    width: 100%;
+    @include make-flex();
+    background: #f8fcff;
+  }
+}

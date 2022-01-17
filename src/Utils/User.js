@@ -100,23 +100,23 @@ function getGithub(userData) {
 }
 
 function parseUserData(userData) {
-  let user = new User({
-    uid: userData.id,
-    email: userData.email,
-    provider: userData.app_metadata.provider,
-    otherProviders: userData.app_metadata.providers,
-    GoogleUserData: getGoogle(userData),
-    GithubUserData: getGithub(userData),
-    confirmationDetails: {
-      email_confirmed_at: userData.email_confirmed_at,
-      confirmed_at: userData.confirmed_at,
-      last_sign_in: userData.last_sign_in_at,
-      created_at: userData.created_at,
-      updated_at: userData.updated_at,
-    },
-  });
-
-  return user;
+  return userData !== null
+    ? new User({
+        uid: userData.id,
+        email: userData.email,
+        provider: userData.app_metadata.provider,
+        otherProviders: userData.app_metadata.providers,
+        GoogleUserData: getGoogle(userData),
+        GithubUserData: getGithub(userData),
+        confirmationDetails: {
+          email_confirmed_at: userData.email_confirmed_at,
+          confirmed_at: userData.confirmed_at,
+          last_sign_in: userData.last_sign_in_at,
+          created_at: userData.created_at,
+          updated_at: userData.updated_at,
+        },
+      })
+    : null;
 }
 
 export { GoogleUser, GithubUser, User, parseUserData, getGoogle, getGithub };

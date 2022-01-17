@@ -1,22 +1,26 @@
-import { createStore, action, computed } from "easy-peasy";
+import { createStore, action, persist } from "easy-peasy";
 import { decks } from "./mockData";
 
 let sampleDecks = decks;
 
-const Store = createStore({
-  user: {},
-  setUser: action((state, payload) => {
-    state.user = payload;
-  }),
+const Store = createStore(
+  persist({
+    user: {},
+    setUser: action((state, payload) => {
+      state.user = payload;
+    }),
 
-  decks: sampleDecks,
-  currentDeck: computed((state) => {
-    return state.decks[0];
-  }),
-  setCurrentDeck: action((state, payload) => {
-    const id = payload;
-    state.currentDeck = state.decks.find((deck) => deck.id === id);
-  }),
-});
+    decks: sampleDecks,
+
+    currentDeck: null,
+    setCurrentDeck: action((state, payload) => {
+      const id = payload;
+      state.currentDeck = state.decks.find((deck) => {
+        // console.log(state.currentDeck)
+        return deck.deckId === id;
+      });
+    }),
+  })
+);
 
 export default Store;

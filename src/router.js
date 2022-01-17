@@ -9,6 +9,10 @@ export default function Router() {
       <Switch>
         <Route exact path="/" component={views.Home} />
         <ProtectedRoute path="/app/dashboard" component={views.Dashboard} />
+        <ProtectedRoute
+          path="/app/flashcard/view/:deckId"
+          component={views.FlashcardViewer}
+        />
       </Switch>
     </BrowserRouter>
   );

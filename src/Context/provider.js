@@ -18,7 +18,8 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     supabase.auth.onAuthStateChange((event) => {
       if (event === "SIGNED_IN" || event === "USER_UPDATED") {
-        const supaUser = parseUserData(supabase.auth.user());
+        const supaUser = supabase.auth.user();
+        console.log(event);
         setUserState(supaUser);
         setStatus("ready");
         setUser(supaUser);
@@ -32,15 +33,19 @@ export function AuthProvider({ children }) {
   });
 
   useEffect(() => {
-    checkUser();
-    window.addEventListener("hashchange", function () {
-      checkUser();
-    });
+    // checkUser();
+    // window.addEventListener("hashchange", function () {
+    //   checkUser();
+    // });
+    window.onhashchange = () => {
+      // checkUser();
+    };
   }, []);
 
   async function checkUser() {
     const supaUser = parseUserData(supabase.auth.user());
     setUserState(supaUser);
+
     if (supaUser) {
       setStatus("ready");
     }
