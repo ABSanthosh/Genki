@@ -1,13 +1,13 @@
 class GoogleUser {
   constructor(
     props = {
-      id: "",
-      uid: "",
-      avatar: "",
-      email: "",
-      isEmailVerified: "",
-      name: "",
-      providerId: "",
+      id: null,
+      uid: null,
+      avatar: null,
+      email: null,
+      isEmailVerified: null,
+      name: null,
+      providerId: null,
     }
   ) {
     this.id = props.id;
@@ -23,14 +23,14 @@ class GoogleUser {
 class GithubUser {
   constructor(
     props = {
-      id: "",
-      uid: "",
-      avatar: "",
-      email: "",
-      isEmailVerified: "",
-      name: "",
-      preferredName: "",
-      providerId: "",
+      id: null,
+      uid: null,
+      avatar: null,
+      email: null,
+      isEmailVerified: null,
+      name: null,
+      preferredName: null,
+      providerId: null,
     }
   ) {
     this.id = props.id;
@@ -46,13 +46,13 @@ class GithubUser {
 class User {
   constructor(
     props = {
-      uid: "",
-      email: "",
-      provider: "",
-      otherProviders: "",
-      GoogleUserData: "",
-      GithubUserData: "",
-      confirmationDetails: "",
+      uid: null,
+      email: null,
+      provider: null,
+      otherProviders: null,
+      GoogleUserData: null,
+      GithubUserData: null,
+      confirmationDetails: null,
     }
   ) {
     this.uid = props.uid;
