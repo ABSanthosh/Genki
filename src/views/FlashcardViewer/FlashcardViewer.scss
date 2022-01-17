@@ -13,9 +13,11 @@
   }
 
   &__container {
-    height: calc(100% - 66px);
+    min-height: calc(100% - 66px);
     width: 100%;
-    @include make-flex();
+    @include make-flex($just: flex-start);
     background: #f8fcff;
+    gap: 20px;
+    padding: 30px;
   }
 }
