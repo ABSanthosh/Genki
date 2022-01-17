@@ -17,7 +17,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event) => {
-      console.log(userState);
       if (event === "SIGNED_IN" || event === "USER_UPDATED") {
         const supaUser = parseUserData(supabase.auth.user());
         setUserState(supaUser);

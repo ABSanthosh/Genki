@@ -6,10 +6,16 @@ import "./Dashboard.scss";
 
 function Dashboard(props) {
   const { logout, userState } = useAuth();
+  // console.log(userState.GithubUserData.name);
   return (
     <div className="DashboardWrapper">
-      <FancyButton text="Sign out" onClick={logout} />
-      <pre>{JSON.stringify(userState, null, 2)}</pre>
+      <header className="DashboardWrapper__header">
+        <FancyButton text="Sign out" onClick={logout} />
+        <p>
+          Hello,{" "}
+          {userState.GoogleUserData.name || userState.GithubUserData.name}
+        </p>
+      </header>
     </div>
   );
 }
