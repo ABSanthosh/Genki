@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 import { AuthContext } from "./context";
 import { useStoreActions } from "easy-peasy";
 import supabase from "../supabase/supabase-config";
+import { parseUserData } from "../Utils/User";
 
 export function AuthProvider({ children }) {
-  const [userState, setUserState] = useState(supabase.auth.user());
+  const [userState, setUserState] = useState(
+    parseUserData(supabase.auth.user())
+  );
   const [status, setStatus] = useState(
     supabase.auth.user() === null ? "loading" : "ready"
   );
@@ -16,7 +19,7 @@ export function AuthProvider({ children }) {
     supabase.auth.onAuthStateChange((event) => {
       console.log(userState);
       if (event === "SIGNED_IN" || event === "USER_UPDATED") {
-        const supaUser = supabase.auth.user();
+        const supaUser = parseUserData(supabase.auth.user());
         setUserState(supaUser);
         setStatus("ready");
         setUser(supaUser);
@@ -37,7 +40,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   async function checkUser() {
-    const supaUser = supabase.auth.user();
+    const supaUser = parseUserData(supabase.auth.user());
     setUserState(supaUser);
     if (supaUser) {
       setStatus("ready");
