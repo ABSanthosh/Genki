@@ -1,0 +1,23 @@
+@import "../../styles/mixins";
+
+.CardScrollerWrapper {
+  @include make-flex();
+  gap: 10px;
+  &__CardHolder {
+    @include make-flex($dir: row);
+    gap: 30px;
+  }
+
+  &__controls {
+    width: 100%;
+    height: 50px;
+    @include make-flex($dir: row, $just: space-between);
+    span {
+      height: 100%;
+      width: 50%;
+      font-size: 40px;
+      @include make-flex();
+      cursor: pointer;
+    }
+  }
+}
