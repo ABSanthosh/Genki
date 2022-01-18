@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import PropTypes from "prop-types";
-import { useStoreRehydrated, useStoreState } from "easy-peasy";
+import { useStoreActions, useStoreRehydrated, useStoreState } from "easy-peasy";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./FlashcardViewer.scss";
 import FlipCard from "../../Components/FlipCard/FlipCard";
@@ -9,15 +9,22 @@ import CardScroller from "../../Components/CardScroller/CardScroller";
 function FlashcardViewer(props) {
   const { deckId } = useParams();
   const currentDeck = useStoreState((state) => state.currentDeck);
-  const isRehydrated = useStoreRehydrated();
+  const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
 
-  console.log(isRehydrated, currentDeck);
+  useEffect(() => {
+    if (currentDeck === null) {
+      setCurrentDeck(deckId);
+    }
+  }, [currentDeck, deckId, setCurrentDeck]);
+
+  const isRehydrated = useStoreRehydrated();
   const childArray = isRehydrated
     ? currentDeck.cards.map((item, index) => (
         <FlipCard key={item.id} front={item.front} back={item.back} />
       ))
     : [];
 
+  console.log(isRehydrated, currentDeck);
   return (
     <>
       {isRehydrated ? (
