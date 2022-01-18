@@ -1,8 +1,8 @@
 // `${Math.random().toString(36).substring(2, 9)}`
 const decks = [
   {
-    deckId: "nsh19mt",
-    title: "This is the first deck",
+    id: "nsh19mt",
+    title: "First Deck",
     author: "Santhosh",
     description: "This is the first deck",
     cards: [
@@ -51,8 +51,8 @@ const decks = [
     ],
   },
   {
-    deckId: "do8txi2",
-    title: "This is the second deck",
+    id: "do8txi2",
+    title: "Second Deck",
     author: "Santhosh",
     description: "This is the second deck",
     cards: [

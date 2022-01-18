@@ -41,7 +41,7 @@ const Store = createStore(
     setCurrentDeck: action((state, payload) => {
       const id = payload;
       state.currentDeck = state.decks.find((deck) => {
-        return deck.deckId === id;
+        return deck.id === id;
       });
     }),
 
@@ -59,7 +59,7 @@ const Store = createStore(
       state.deck = [
         ...state.deck,
         {
-          deckId: `${Math.random().toString(36).substring(2, 9)}`,
+          id: `${Math.random().toString(36).substring(2, 9)}`,
           title: payload.title,
           author: payload.author,
           description: payload.description,
@@ -67,6 +67,18 @@ const Store = createStore(
           cards: payload.cards,
         },
       ];
+    }),
+
+    updateDeck: action((state, payload) => {
+      state.decks = state.decks.map((deck) => {
+        if (deck.id === payload.id) {
+          deck.title = payload.title;
+          deck.author = payload.author;
+          deck.description = payload.description;
+          deck.cards = payload.cards;
+        }
+        return deck;
+      })
     }),
   })
 );
