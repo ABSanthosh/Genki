@@ -1,6 +1,7 @@
+// `${Math.random().toString(36).substring(2, 9)}`
 const decks = [
   {
-    deckId: "deck1",
+    deckId: "nsh19mt",
     title: "This is the first deck",
     author: "Santhosh",
     description: "This is the first deck",
@@ -50,7 +51,7 @@ const decks = [
     ],
   },
   {
-    deckId: "deck2",
+    deckId: "do8txi2",
     title: "This is the second deck",
     author: "Santhosh",
     description: "This is the second deck",
