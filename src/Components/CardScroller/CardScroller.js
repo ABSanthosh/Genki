@@ -64,9 +64,7 @@ function CardScroller() {
   );
 }
 
-CardScroller.propTypes = {
-  childArray: PropTypes.node.isRequired,
-};
+CardScroller.propTypes = {};
 
 CardScroller.defaultProps = {};
 

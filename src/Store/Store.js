@@ -56,8 +56,8 @@ const Store = createStore(
       //   ],
       // };
 
-      state.deck = [
-        ...state.deck,
+      state.decks = [
+        ...state.decks,
         {
           id: `${Math.random().toString(36).substring(2, 9)}`,
           title: payload.title,

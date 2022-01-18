@@ -3,11 +3,13 @@ import FancyButton from "../../Components/FancyButton/FancyButton";
 import { useAuth } from "../../hooks/useAuth";
 import "./Dashboard.scss";
 import { useStoreActions, useStoreState } from "easy-peasy";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Dashboard() {
   const { logout, userState } = useAuth();
   const decks = useStoreState((state) => state.decks);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
+  let history = useHistory();
 
   return (
     <div className="DashboardWrapper">
@@ -34,6 +36,9 @@ function Dashboard() {
                   <a
                     href={`/app/flashcard/edit/${item.id}`}
                     className="DashboardWrapper__deckItem--rightItem"
+                    onClick={() => {
+                      setCurrentDeck(item.id);
+                    }}
                   >
                     Edit
                   </a>
@@ -53,6 +58,11 @@ function Dashboard() {
               </div>
             );
           })}
+
+          <FancyButton
+            text={`Add new deck`}
+            onClick={() => history.push("/app/flashcard/add/newDeck")}
+          />
         </div>
       </div>
     </div>
