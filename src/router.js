@@ -15,8 +15,12 @@ export default function Router() {
           component={views.FlashcardViewer}
         />
         <ProtectedRoute
-          path="/app/flashcard/:action/:id"
+          path="/app/flashcard/edit/:id"
           component={views.CardEditor}
+        />
+         <ProtectedRoute
+          path="/app/flashcard/add/:id"
+          component={views.AddDeck}
         />
       </Switch>
     </BrowserRouter>
