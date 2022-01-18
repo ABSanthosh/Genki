@@ -6,15 +6,15 @@ import "./FlashcardViewer.scss";
 import CardScroller from "../../Components/CardScroller/CardScroller";
 
 function FlashcardViewer(props) {
-  const { deckId } = useParams();
+  const { id } = useParams();
   const currentDeck = useStoreState((state) => state.currentDeck);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
 
   useEffect(() => {
     if (currentDeck === null) {
-      setCurrentDeck(deckId);
+      setCurrentDeck(id);
     }
-  }, [currentDeck, deckId, setCurrentDeck]);
+  }, [currentDeck, id, setCurrentDeck]);
 
   const isRehydrated = useStoreRehydrated();
   console.log(isRehydrated, currentDeck);

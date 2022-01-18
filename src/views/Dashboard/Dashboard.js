@@ -35,16 +35,16 @@ function Dashboard() {
                     {item.author}
                   </div>
                   <a
-                    href={`/app/flashcard/edit/${item.deckId}`}
+                    href={`/app/flashcard/edit/${item.id}`}
                     className="DashboardWrapper__deckItem--rightItem"
                   >
                     Edit
                   </a>
                   <a
-                    href={`/app/flashcard/view/${item.deckId}`}
+                    href={`/app/flashcard/view/${item.id}`}
                     className="DashboardWrapper__deckItem--rightItem"
                     onClick={() => {
-                      setCurrentDeck(item.deckId);
+                      setCurrentDeck(item.id);
                     }}
                   >
                     Open Deck
