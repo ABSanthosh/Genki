@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import FlipCard from "../FlipCard/FlipCard";
 import "./CardScroller.scss";
 import { useStoreState } from "easy-peasy";

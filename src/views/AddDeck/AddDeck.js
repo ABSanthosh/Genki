@@ -35,7 +35,7 @@ function AddDeck(props) {
   }
 
   const [editData, setEditData] = useState(newDeckInit());
-  const updateDeck = useStoreActions((action) => action.updateDeck);
+  // const updateDeck = useStoreActions((action) => action.updateDeck);
   const addNewDeck = useStoreActions((action) => action.addNewDeck);
 
   function editCardMetaData(field, value) {
