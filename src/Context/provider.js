@@ -42,14 +42,14 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  async function checkUser() {
-    const supaUser = parseUserData(supabase.auth.user());
-    setUserState(supaUser);
+  // async function checkUser() {
+  //   const supaUser = parseUserData(supabase.auth.user());
+  //   setUserState(supaUser);
 
-    if (supaUser) {
-      setStatus("ready");
-    }
-  }
+  //   if (supaUser) {
+  //     setStatus("ready");
+  //   }
+  // }
 
   async function logout() {
     await supabase.auth.signOut();

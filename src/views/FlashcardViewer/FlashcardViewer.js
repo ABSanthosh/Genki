@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./FlashcardViewer.scss";
 import CardScroller from "../../Components/CardScroller/CardScroller";
 
-function FlashcardViewer(props) {
+function FlashcardViewer() {
   const { id } = useParams();
   const currentDeck = useStoreState((state) => state.currentDeck);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
