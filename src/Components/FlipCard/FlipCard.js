@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./FlipCard.scss";
 
-function FlipCard({ front, back }) {
+function FlipCard({ front, back, className, reset }) {
   const [isFlipped, setFlipped] = useState(false);
+
+  
+
   return (
-    <div className="FlipCardWrapper">
+    <div className={`FlipCardWrapper ${className}`}>
       <div
         className={`FlipCardWrapper__item ${
           isFlipped ? "FlipCardWrapper__item--flip" : ""
         }`}
         onClick={() => setFlipped(!isFlipped)}
       >
-        <div className="FlipCardWrapper__item--front">{front}</div>
-        <div className="FlipCardWrapper__item--back">{back}</div>
+        <div className="FlipCardWrapper__item--front">
+          <div className="FlipCardWrapper__item--content">{front}</div>
+        </div>
+        <div className="FlipCardWrapper__item--back">
+          <div className="FlipCardWrapper__item--content">{back}</div>
+        </div>
       </div>
     </div>
   );
@@ -22,11 +29,13 @@ function FlipCard({ front, back }) {
 FlipCard.propTypes = {
   front: PropTypes.string,
   back: PropTypes.string,
+  className: PropTypes.string,
 };
 
 FlipCard.defaultProps = {
   front: "front",
   back: "back",
+  className: "",
 };
 
 export default FlipCard;

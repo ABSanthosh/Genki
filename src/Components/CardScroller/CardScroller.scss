@@ -3,9 +3,40 @@
 .CardScrollerWrapper {
   @include make-flex();
   gap: 10px;
+  position: relative;
+
   &__CardHolder {
     @include make-flex($dir: row);
     gap: 30px;
+    perspective: 1000px;
+    height: 340px;
+    width: 560px;
+    .FlipCardWrapper:nth-child(1),
+    .FlipCardWrapper:nth-child(3) {
+      background: transparent;
+      box-shadow: none;
+      transform-style: preserve-3d;
+
+      opacity: 0;
+      pointer-events: none;
+
+      display: block !important;
+      transition: transform 0.24s ease, opacity 0.12s linear !important;
+      transform: translateX(-16%) rotateY(16deg) translateZ(0) !important;
+    }
+    .FlipCardWrapper:nth-child(3) {
+      transform: translateX(16%) rotateY(-16deg) translateZ(0) !important;
+      z-index: 5;
+    }
+
+    .FlipCardWrapper:nth-child(2) {
+      display: block !important;
+      transition: transform 0.24s ease, opacity 0.12s linear !important;
+      background: transparent;
+      box-shadow: none;
+      transform-style: preserve-3d;
+      z-index: 6;
+    }
   }
 
   &__controls {

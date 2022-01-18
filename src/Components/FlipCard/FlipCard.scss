@@ -1,12 +1,23 @@
 @import "../../styles/mixins";
 
 .FlipCardWrapper {
-  height: 340px;
-  width: 495px;
+  height: 100%;
+  width: 100%;
   perspective: 1000px;
   position: relative;
+
+  zoom: 1;
+  bottom: 10%;
+  clear: left;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: none !important;
+
   &__item {
-    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -16,12 +27,12 @@
     transform-style: preserve-3d;
     transition: transform 0.45s ease;
     background-color: transparent;
-    box-shadow: 0 0.3125rem 1.25rem 0 rgb(0 0 0 / 16%);
-    border-radius: 9px;
+    border-radius: 1rem;
 
     &--front,
     &--back {
-      border-radius: 9px;
+      box-shadow: 0 0 2.5rem 0 rgb(0 0 0 / 16%);
+      border-radius: 1rem;
       backface-visibility: hidden;
       position: absolute;
       height: 100%;
@@ -42,12 +53,21 @@
 
     &--back {
       background-color: #ffffff;
-      transform: rotateX(180deg);
+      transform: rotateX(-180deg);
     }
 
     &--flip {
-      // transform: rotateX(-180deg);
       transform: rotateX(180deg) !important;
+    }
+
+    &--content {
+      @include make-flex();
+      text-align: center;
+      padding: 40px 34px;
+      font-size: 30px;
+      height: 100%;
+      width: 100%;
+      font-family: "Poppins", sans-serif;
     }
   }
 }
