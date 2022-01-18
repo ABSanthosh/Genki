@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import FancyButton from "../../Components/FancyButton/FancyButton";
 import { useAuth } from "../../hooks/useAuth";
 import "./Dashboard.scss";
@@ -9,8 +8,7 @@ function Dashboard() {
   const { logout, userState } = useAuth();
   const decks = useStoreState((state) => state.decks);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
-  // const currentDeck = useStoreState((state) => state.currentDeck);
-  // console.log(userState);
+
   return (
     <div className="DashboardWrapper">
       <header className="DashboardWrapper__header">
@@ -21,7 +19,6 @@ function Dashboard() {
         </p>
       </header>
       <div className="DashboardWrapper__body">
-        {/* {JSON.stringify(currentDeck)} */}
         <div className="DashboardWrapper__deckContainer">
           {decks.map((item, key) => {
             return (
@@ -62,12 +59,8 @@ function Dashboard() {
   );
 }
 
-Dashboard.propTypes = {
-  // bla: PropTypes.string,
-};
+Dashboard.propTypes = {};
 
-Dashboard.defaultProps = {
-  // bla: 'test',
-};
+Dashboard.defaultProps = {};
 
 export default Dashboard;
