@@ -2,10 +2,11 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import React, { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import FancyButton from "../../Components/FancyButton/FancyButton";
 import "./CardEditor.scss";
 
 function CardEditor() {
-  const { action, id } = useParams();
+  const { id } = useParams();
 
   const currentDeck = useStoreState((state) => state.currentDeck);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
@@ -14,7 +15,7 @@ function CardEditor() {
   const [editData, setEditData] = useState(currentDeck);
 
   useEffect(() => {
-    if (currentDeck === null) {
+    if (currentDeck === null || currentDeck.id !== id) {
       setCurrentDeck(id);
     }
   }, [currentDeck, id, setCurrentDeck]);
@@ -44,11 +45,31 @@ function CardEditor() {
     setEditData(currentOldData);
   }
 
+  function addNewCard() {
+    const newCard = {
+      id: editData.cards.length + 1,
+      front: "",
+      back: "",
+    };
+    setEditData({
+      ...editData,
+      cards: [...editData.cards, newCard],
+    });
+  }
+
+  function deleteCard(id) {
+    const newCards = editData.cards.filter((card) => card.id !== id);
+    setEditData({
+      ...editData,
+      cards: newCards,
+    });
+  }
+
   return (
     <div className="CardEditorWrapper">
       <header className="CardEditorWrapper__header">
         <p>
-          {action} {">"} {id}
+          Edit {">"} {id}
         </p>
       </header>
       <div className="CardEditorWrapper__container">
@@ -87,11 +108,16 @@ function CardEditor() {
             </button>
           </div>
         </div>
+
         <div className="CardEditorWrapper__subContainer">
           {editData.cards.map((item, index) => (
             <div key={index} className="CardEditorWrapper__editableItem">
               <div className="CardEditorWrapper__editableItem--top">
                 {index + 1}
+                <FancyButton
+                  text={"Delete"}
+                  onClick={() => deleteCard(item.id)}
+                />
               </div>
               <div className="CardEditorWrapper__editableItem--bottom">
                 <div className="CardEditorWrapper__editableItem--termBox">
@@ -117,6 +143,8 @@ function CardEditor() {
               </div>
             </div>
           ))}
+
+          <FancyButton text={"Add Card"} onClick={addNewCard} />
         </div>
       </div>
     </div>

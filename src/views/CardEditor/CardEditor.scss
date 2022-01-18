@@ -83,7 +83,7 @@
       height: 62px;
       width: 100%;
       padding: 0 25px;
-      @include make-flex($dir: row, $just: flex-start);
+      @include make-flex($dir: row, $just: space-between);
       border-bottom: 1px solid #e0e0e0;
       cursor: move;
       color: rgb(173, 173, 173);
