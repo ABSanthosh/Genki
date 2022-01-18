@@ -12,7 +12,12 @@ function CardScroller() {
   const currentDeck = useStoreState((state) => state.currentDeck);
   const childArray = isRehydrated
     ? currentDeck.cards.map((item, index) => (
-        <FlipCard key={item.id} front={item.front} back={item.back} />
+        <FlipCard
+          key={item.id}
+          reset={index === cardNumber}
+          front={item.front}
+          back={item.back}
+        />
       ))
     : [];
 
@@ -56,6 +61,9 @@ function CardScroller() {
           </div>
           <div className="CardScrollerWrapper__controls">
             <span onClick={() => prevCard()}>&lt;</span>
+            <span className="CardScrollerWrapper__controls--count">
+              {cardNumber + 1}/{childArray.length}
+            </span>
             <span onClick={() => nextCard()}>&gt;</span>
           </div>
         </div>
