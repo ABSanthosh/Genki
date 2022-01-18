@@ -36,9 +36,10 @@
 
     &--top {
       font-family: "Montserrat", sans-serif;
-      @include make-flex($align: flex-start, $dir: row);
+      @include make-flex($just: flex-start, $dir: row);
       gap: 10px;
       color: #a3a3a3;
+      width: 100%;
     }
 
     &--bottom {

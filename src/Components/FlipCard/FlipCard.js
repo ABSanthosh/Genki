@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./FlipCard.scss";
 
 function FlipCard({ front, back, className, reset }) {
   const [isFlipped, setFlipped] = useState(false);
 
-  
+  // To reset flip state
+  useEffect(() => {
+    setFlipped(false);
+  }, [reset]);
 
   return (
     <div className={`FlipCardWrapper ${className}`}>

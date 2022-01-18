@@ -1,33 +1,31 @@
-import React, { useEffect } from "react";
-// import PropTypes from "prop-types";
 import { useStoreActions, useStoreRehydrated, useStoreState } from "easy-peasy";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import "./FlashcardViewer.scss";
-import CardScroller from "../../Components/CardScroller/CardScroller";
+// import PropTypes from 'prop-types';
+import "./CardEditor.scss";
 
-function FlashcardViewer(props) {
-  const { deckId } = useParams();
+function CardEditor() {
+  const { action, deckId } = useParams();
+  const isRehydrated = useStoreRehydrated();
+
   const currentDeck = useStoreState((state) => state.currentDeck);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
-
+  console.log(currentDeck);
   useEffect(() => {
     if (currentDeck === null) {
       setCurrentDeck(deckId);
     }
   }, [currentDeck, deckId, setCurrentDeck]);
 
-  const isRehydrated = useStoreRehydrated();
-  console.log(isRehydrated, currentDeck);
   return (
     <>
       {isRehydrated ? (
-        <div className="FlashcardViewerWrapper">
+        <div className="CardEditorWrapper">
           <header className="FlashcardViewerWrapper__header">
-            <p>{currentDeck.title}</p>
+            <p>
+              {action} {">"} {deckId}
+            </p>
           </header>
-          <div className="FlashcardViewerWrapper__container">
-            <CardScroller />
-          </div>
         </div>
       ) : (
         <div>Loading...</div>
@@ -36,12 +34,12 @@ function FlashcardViewer(props) {
   );
 }
 
-FlashcardViewer.propTypes = {
+CardEditor.propTypes = {
   // bla: PropTypes.string,
 };
 
-FlashcardViewer.defaultProps = {
+CardEditor.defaultProps = {
   // bla: 'test',
 };
 
-export default FlashcardViewer;
+export default CardEditor;

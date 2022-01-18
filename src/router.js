@@ -13,6 +13,10 @@ export default function Router() {
           path="/app/flashcard/view/:deckId"
           component={views.FlashcardViewer}
         />
+        <ProtectedRoute
+          path="/app/flashcard/:action/:deckId"
+          component={views.CardEditor}
+        />
       </Switch>
     </BrowserRouter>
   );

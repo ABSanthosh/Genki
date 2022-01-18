@@ -9,8 +9,8 @@ function Dashboard() {
   const { logout, userState } = useAuth();
   const decks = useStoreState((state) => state.decks);
   const setCurrentDeck = useStoreActions((action) => action.setCurrentDeck);
-  const currentDeck = useStoreState((state) => state.currentDeck);
-  console.log(userState);
+  // const currentDeck = useStoreState((state) => state.currentDeck);
+  // console.log(userState);
   return (
     <div className="DashboardWrapper">
       <header className="DashboardWrapper__header">
@@ -25,14 +25,7 @@ function Dashboard() {
         <div className="DashboardWrapper__deckContainer">
           {decks.map((item, key) => {
             return (
-              <a
-                href={`/app/flashcard/view/${item.deckId}`}
-                className="DashboardWrapper__deckItem"
-                key={key}
-                onClick={() => {
-                  setCurrentDeck(item.deckId);
-                }}
-              >
+              <div className="DashboardWrapper__deckItem" key={key}>
                 <div className="DashboardWrapper__deckItem--top">
                   <div className="DashboardWrapper__deckItem--item">
                     {item.cards.length} Entries
@@ -41,11 +34,26 @@ function Dashboard() {
                   <div className="DashboardWrapper__deckItem--item">
                     {item.author}
                   </div>
+                  <a
+                    href={`/app/flashcard/edit/${item.deckId}`}
+                    className="DashboardWrapper__deckItem--rightItem"
+                  >
+                    Edit
+                  </a>
+                  <a
+                    href={`/app/flashcard/view/${item.deckId}`}
+                    className="DashboardWrapper__deckItem--rightItem"
+                    onClick={() => {
+                      setCurrentDeck(item.deckId);
+                    }}
+                  >
+                    Open Deck
+                  </a>
                 </div>
                 <div className="DashboardWrapper__deckItem--bottom">
                   {item.title}
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>
