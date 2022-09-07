@@ -2,18 +2,22 @@ import React, { useState } from "react";
 // import PropTypes from "prop-types";
 import "./AppHeader.scss";
 
-function AppHeader({ children }) {
+function AppHeader({ children, isQuartz = true }) {
   const [navState, setNavState] = useState(false);
   return (
     <div className="AppHeaderWrapper">
       <div className="AppHeaderWrapper__logo">
-        <a
-          href="https://smoky-quartz.netlify.app/"
-          className="AppHeaderWrapper__logo--quartz"
-        >
-          Quartz
-        </a>
-        <span className="AppHeaderWrapper__logo--cross">x</span>
+        {isQuartz && (
+          <>
+            <a
+              href="https://smoky-quartz.netlify.app/"
+              className="AppHeaderWrapper__logo--quartz"
+            >
+              Quartz
+            </a>
+            <span className="AppHeaderWrapper__logo--cross">x</span>
+          </>
+        )}
         <span className="AppHeaderWrapper__logo--genki">Genki</span>
       </div>
 

@@ -69,5 +69,23 @@
       width: 100%;
       font-family: "Poppins", sans-serif;
     }
+    &--legend {
+      align-items: center;
+      background-color: #303545;
+      bottom: 0;
+      color: #fff;
+      display: flex;
+      height: 3rem;
+      justify-content: center;
+      padding: 1.25rem 0.625rem;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+
+      border-radius: 0 0 1rem 1rem;
+
+      font-size: 15px;
+      font-weight: 600;
+    }
   }
 }

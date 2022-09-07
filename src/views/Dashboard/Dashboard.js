@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import "./Dashboard.scss";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import AppHeader from "../../Components/AppHeader/AppHeader";
 
 function Dashboard() {
   const { logout, userState } = useAuth();
@@ -13,13 +14,13 @@ function Dashboard() {
 
   return (
     <div className="DashboardWrapper">
-      <header className="DashboardWrapper__header">
-        <FancyButton text="Sign out" onClick={logout} />
+      <AppHeader isQuartz={false}>
         <p>
           Hello,{" "}
           {userState.GoogleUserData.name || userState.GithubUserData.name}
         </p>
-      </header>
+        <FancyButton text="Sign out" onClick={logout} />
+      </AppHeader>
       <div className="DashboardWrapper__body">
         <div className="DashboardWrapper__deckContainer">
           {decks.map((item, key) => {

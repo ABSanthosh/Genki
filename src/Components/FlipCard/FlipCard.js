@@ -20,9 +20,15 @@ function FlipCard({ front, back, className, reset }) {
       >
         <div className="FlipCardWrapper__item--front">
           <div className="FlipCardWrapper__item--content">{front}</div>
+          <div className="FlipCardWrapper__item--legend">
+            Click again to see the term 👆
+          </div>
         </div>
         <div className="FlipCardWrapper__item--back">
           <div className="FlipCardWrapper__item--content">{back}</div>
+          <div className="FlipCardWrapper__item--legend">
+            Click again to see the term 👆
+          </div>
         </div>
       </div>
     </div>

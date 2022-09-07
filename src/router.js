@@ -8,7 +8,7 @@ export default function Router() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={views.Home} />
-        
+
         <ProtectedRoute path="/app/dashboard" component={views.Dashboard} />
         <ProtectedRoute
           path="/app/flashcard/view/:id"
@@ -18,7 +18,7 @@ export default function Router() {
           path="/app/flashcard/edit/:id"
           component={views.CardEditor}
         />
-         <ProtectedRoute
+        <ProtectedRoute
           path="/app/flashcard/add/:id"
           component={views.AddDeck}
         />
